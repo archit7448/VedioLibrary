@@ -1,0 +1,10 @@
+.header {
+  color: var(--color-primary-first);
+  padding: 2rem;
+  width: 100%;
+}
+.header h1 {
+  font-weight: 900;
+  cursor: pointer;
+  color: var(--color-primary-first);
+}

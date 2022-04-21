@@ -1,0 +1,6 @@
+@import url(./utility/CSS/main.css);
+main {
+  display: flex;
+  background-color: var(--color-background-primary);
+  color: var(--color-primary-first);
+}

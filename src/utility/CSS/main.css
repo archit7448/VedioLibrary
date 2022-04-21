@@ -1,0 +1,40 @@
+@import url(./utility.css);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --color-primary-first: white;
+  --color-primary-second: #e50914;
+  --color-background-primary: #000000;
+  --color-icon: #a9a9a9;
+}
+
+[data-theme="dark"] {
+  --color-primary-first: #1f51f1;
+}
+
+html {
+  font-size: 62.5%;
+}
+a {
+  text-decoration: none;
+}
+input,
+textarea,
+button {
+  font-family: "Roboto", sans-serif;
+  font-size: inherit;
+}
+
+@media only screen and (max-width: 720px) {
+  html {
+    font-size: 55%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
+}
