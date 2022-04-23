@@ -1,14 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { ExplorePage } from "./pages/explore/explore";
-import { HistoryPage } from "./pages/history/history";
-import { HomePage } from "./pages/Homepage/pages";
-import { LikedPage } from "./pages/liked/liked";
-import { LogInPage } from "./pages/Login/login";
-import { PlaylistPage } from "./pages/playlist/playlist";
-import { SignUpPage } from "./pages/signUp/signUp";
-import { WatchLaterPage } from "./pages/watchLater/watchLater";
-
+import {
+  ExplorePage,
+  HistoryPage,
+  HomePage,
+  LikedPage,
+  WatchLaterPage,
+  PlaylistPage,
+  LogInPage,
+  SignUpPage,
+} from "./pages/index";
 function App() {
   return (
     <div className="App">
