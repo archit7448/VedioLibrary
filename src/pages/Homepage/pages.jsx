@@ -2,10 +2,15 @@ import { Header } from "../../Components/header/header";
 import { Sidebar } from "../../Components/sidebar/sidebar";
 import mainImage from "../../assets/homepage.jpg";
 import "./pages.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useData } from "../../context/data";
 export const HomePage = () => {
-  const { genres } = useData();
+  const { genres, dispatch } = useData();
+  const navigate = useNavigate();
+  const GenresHanler = (categoryName) => {
+    navigate("/explore");
+    dispatch({ type: "ADD_FILTER", payload: categoryName });
+  };
   return (
     <main>
       <Sidebar />
@@ -27,7 +32,11 @@ export const HomePage = () => {
           <div className="images-wrapper">
             {genres.map(({ _id, imageSrc, categoryName }) => {
               return (
-                <div key={_id} className="genres-card">
+                <div
+                  key={_id}
+                  className="genres-card"
+                  onClick={() => GenresHanler(categoryName)}
+                >
                   <img
                     src={imageSrc}
                     alt={categoryName}

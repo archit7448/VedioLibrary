@@ -1,3 +1,7 @@
+/* color */
+.background-color-primary {
+  background-color: var(--color-primary-second);
+}
 /* flex */
 .flex-center {
   display: flex;

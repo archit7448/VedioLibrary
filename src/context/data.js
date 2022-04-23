@@ -6,6 +6,7 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunction, IntialState);
+
   useEffect(() => {
     (async () => {
       try {
@@ -15,10 +16,29 @@ export const DataProvider = ({ children }) => {
         console.log(error);
       }
     })();
-  },[]);
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get("/api/videos");
+        dispatch({ type: "ADD_VEDIOS", payload: response.data.videos });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   return (
-    <DataContext.Provider value={{ genres: state.genres, dispatch }}>
+    <DataContext.Provider
+      value={{
+        genres: state.genres,
+        vedios: state.vedios,
+        filter: state.filter,
+        filterData: state.filterData,
+        dispatch,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );
