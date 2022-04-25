@@ -1,6 +1,8 @@
 @import url(./utility/CSS/main.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500,700);
 main {
   display: flex;
   background-color: var(--color-background-primary);
   color: var(--color-primary-first);
+  font-family: "Raleway";
 }
