@@ -2,10 +2,10 @@ export const IntialGenres = (state, action) => {
   return { ...state, genres: [...action.payload] };
 };
 
-export const IntialVedio = (state, action) => {
+export const Intialvideo = (state, action) => {
   return {
     ...state,
-    vedios: [...action.payload],
+    videos: [...action.payload],
     filterData: [...action.payload],
   };
 };

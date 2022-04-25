@@ -1,4 +1,4 @@
-.vedio-wrapper {
+.video-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -18,7 +18,7 @@
   border: 2px solid var(--color-primary-first);
 }
 @media only screen and (max-width:720px) {
-  .vedio-wrapper{
+  .video-wrapper{
     padding: 1.5rem;
     margin-bottom: 6rem;
   }

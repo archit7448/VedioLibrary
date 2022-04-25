@@ -1,4 +1,4 @@
-.vedio-card {
+.video-card {
   box-shadow: 0.5px 0.5px 10px rgba(238, 235, 235, 0.75),
     -0.5px -0.5px 5px rgba(234, 234, 234, 0.75);
   width: 350px;
@@ -8,15 +8,15 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.vedio-card img {
+.video-card img {
   width: 100%;
   cursor: pointer;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
 }
-.vedio-card h1{
+.video-card h1{
     font-weight: 100;
 }
-.vedio-card div{
+.video-card div{
     padding: 1rem;
 }

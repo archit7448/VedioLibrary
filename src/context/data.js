@@ -22,7 +22,7 @@ export const DataProvider = ({ children }) => {
     (async () => {
       try {
         const response = await axios.get("/api/videos");
-        dispatch({ type: "ADD_VEDIOS", payload: response.data.videos });
+        dispatch({ type: "ADD_videoS", payload: response.data.videos });
       } catch (error) {
         console.log(error);
       }
@@ -33,7 +33,7 @@ export const DataProvider = ({ children }) => {
     <DataContext.Provider
       value={{
         genres: state.genres,
-        vedios: state.vedios,
+        videos: state.videos,
         filter: state.filter,
         filterData: state.filterData,
         dispatch,

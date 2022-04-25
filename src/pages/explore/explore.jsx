@@ -1,6 +1,6 @@
 import { Header } from "../../Components/header/header";
 import { Sidebar } from "../../Components/sidebar/sidebar";
-import { VedioCard } from "../../Components/VedioCard/vedioCard";
+import { VideoCard } from "../../Components/VideoCard/videoCard";
 import { useData } from "../../context/data";
 import "./explore.css";
 export const ExplorePage = () => {
@@ -39,8 +39,8 @@ export const ExplorePage = () => {
             );
           })}
         </div>
-        <div className="vedio-wrapper">
-          <VedioCard />
+        <div className="video-wrapper">
+          <VideoCard />
         </div>
       </aside>
     </main>

@@ -1,11 +1,11 @@
 export const FilterData = (state, action) => {
-  const { vedios } = state;
+  const { videos } = state;
   return {
     ...state,
     filterData:
       action.payload !== "All"
-        ? vedios.filter(({ categoryName }) => categoryName === action.payload)
-        : vedios,
+        ? videos.filter(({ categoryName }) => categoryName === action.payload)
+        : videos,
     filter: action.payload,
   };
 };

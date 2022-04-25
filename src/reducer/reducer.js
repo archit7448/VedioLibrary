@@ -1,9 +1,9 @@
 import { FilterData } from "./filter";
-import { IntialGenres, IntialVedio } from "./intializeData";
+import { IntialGenres, Intialvideo } from "./intializeData";
 
 const reducer = {
   ADD_GENRES: IntialGenres,
-  ADD_VEDIOS: IntialVedio,
+  ADD_videoS: Intialvideo,
   ADD_FILTER: FilterData,
 };
 
@@ -13,7 +13,7 @@ export const reducerFunction = (state, action) => {
 
 export const IntialState = {
   genres: [],
-  vedios: [],
+  videos: [],
   filter: "All",
   filterData: [],
 };
