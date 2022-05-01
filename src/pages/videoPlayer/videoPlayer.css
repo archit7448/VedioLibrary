@@ -22,11 +22,11 @@ iframe {
 .movie-tag {
   font-size: 3rem;
 }
-.description-para{
-    font-size: 1.6rem;
-    font-weight: 300;
-    word-spacing: 2px;
-    line-height: 1.5;
+.description-para {
+  font-size: 1.6rem;
+  font-weight: 300;
+  word-spacing: 2px;
+  line-height: 1.5;
 }
 .description-tag {
   font-size: 1.6rem;
@@ -41,15 +41,15 @@ iframe {
   margin: 1rem;
   cursor: pointer;
 }
-@media only  screen and (max-width:720px) {
-    .iframe-wrapper{
-        width: 100%;
-        margin: 0rem;
-        box-sizing: border-box;
-        padding: 1rem;
-        margin-bottom: 10rem;
-    }
-    iframe{
-        height: 28rem;
-    }
+@media only screen and (max-width: 720px) {
+  .iframe-wrapper {
+    width: 100%;
+    margin: 0rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    margin-bottom: 10rem;
+  }
+  iframe {
+    height: 28rem;
+  }
 }

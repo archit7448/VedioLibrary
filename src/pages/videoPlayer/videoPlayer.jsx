@@ -21,7 +21,7 @@ export const VideoPage = () => {
         <div className="iframe-wrapper">
           <iframe
             src={`https://www.youtube.com/embed/${_id}`}
-            allowfullscreen="allowfullscreen"
+            allowFullScreen="allowFullScreen"
           />
           <h2 className="category-tag">{`#${categoryName}`}</h2>
           <h1 className="movie-tag">{MovieName}</h1>
