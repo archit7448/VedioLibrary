@@ -29,7 +29,7 @@ export const LogInPage = () => {
           />
           <h3 className="login-small-heading">Password</h3>
           <input
-            type="text"
+            type="password"
             value={password}
             placeholder="Enter Password"
             onChange={(event) => setEmail(event.target.value)}
