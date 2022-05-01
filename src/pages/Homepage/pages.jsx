@@ -19,12 +19,15 @@ export const HomePage = () => {
         <div className="content-wrapper">
           <img src={mainImage} className="image-homepage" />
           <div className="flex-col flex-center content-explore-wrapper">
-            <h1 className="text-l">
+            <h1 className="text-l text-center">
               All types of movies available to watch , get start binge watch it
             </h1>
-            <Link to="/explore">
-              <button className="button-primary button-explore">EXPLORE</button>
-            </Link>
+            <button
+              className="button-primary button-explore"
+              onClick={() => navigate("/explore")}
+            >
+              EXPLORE
+            </button>
           </div>
         </div>
         <div className="genres-wrapper">

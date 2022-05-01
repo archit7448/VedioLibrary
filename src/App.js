@@ -9,6 +9,7 @@ import {
   PlaylistPage,
   LogInPage,
   SignUpPage,
+  VideoPage,
 } from "./pages/index";
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/playlist" element={<PlaylistPage />} />
         <Route path="/login" element={<LogInPage />} />
         <Route path="/signUp" element={<SignUpPage />} />
+        <Route path="/explore/:videoId" element={<VideoPage />} />
       </Routes>
     </div>
   );
