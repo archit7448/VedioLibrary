@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useData } from "../../context/data";
-import { Header } from "../../Components/header/header";
-import { Sidebar } from "../../Components/sidebar/sidebar";
+import { Header, Sidebar } from "../../Components/index";
 import { AiFillHome, AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { MdPlaylistAdd, MdWatchLater } from "react-icons/md";
 import { IoIosShareAlt } from "react-icons/io";

@@ -1,5 +1,4 @@
-import { Header } from "../../Components/header/header";
-import { Sidebar } from "../../Components/sidebar/sidebar";
+import { Header, Sidebar } from "../../Components/index";
 import { useState } from "react";
 import { useAuth } from "../../context/Auth";
 import { useNavigate } from "react-router-dom";

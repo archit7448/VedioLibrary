@@ -1,6 +1,4 @@
-import { Header } from "../../Components/header/header";
-import { Sidebar } from "../../Components/sidebar/sidebar";
-import { VideoCard } from "../../Components/VideoCard/videoCard";
+import { Header, Sidebar, VideoCard } from "../../Components/index";
 import { useData } from "../../context/data";
 import "./explore.css";
 export const ExplorePage = () => {

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Header } from "../../Components/header/header";
-import { Sidebar } from "../../Components/sidebar/sidebar";
+import { Header, Sidebar } from "../../Components/index";
 import { useAuth } from "../../context/Auth";
 import "./login.css";
 export const LogInPage = () => {
@@ -9,7 +8,7 @@ export const LogInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { LoginHandler } = useAuth();
-  const guestHandler = () => {
+  const setGuestCredentials = () => {
     setEmail("architsingh@gmail.com");
     setPassword("architSingh123");
   };
@@ -34,7 +33,7 @@ export const LogInPage = () => {
             placeholder="Enter Password"
             onChange={(event) => setEmail(event.target.value)}
           />
-          <h3 className="guest-heading" onClick={() => guestHandler()}>
+          <h3 className="guest-heading" onClick={() => setGuestCredentials()}>
             login with guest credentials?
           </h3>
           <button

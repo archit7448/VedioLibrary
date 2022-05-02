@@ -1,5 +1,4 @@
-import { Header } from "../../Components/header/header";
-import { Sidebar } from "../../Components/sidebar/sidebar";
+import { Header, Sidebar } from "../../Components/index";
 import mainImage from "../../assets/homepage.jpg";
 import "./pages.css";
 import { Link, useNavigate } from "react-router-dom";
