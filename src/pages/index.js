@@ -6,3 +6,4 @@ export { LogInPage } from "./Login/login";
 export { PlaylistPage } from "./playlist/playlist";
 export { SignUpPage } from "./signUp/signUp";
 export { WatchLaterPage } from "./watchLater/watchLater";
+export { VideoPage } from "./videoPlayer/videoPlayer";

@@ -1,5 +1,4 @@
-import { Header } from "../../Components/header/header";
-import { Sidebar } from "../../Components/sidebar/sidebar";
+import { Header, Sidebar } from "../../Components/index";
 
 export const WatchLaterPage = () => {
   return (
