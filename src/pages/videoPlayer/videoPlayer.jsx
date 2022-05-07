@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useData } from "../../context/data";
-import { Header, Sidebar } from "../../Components/index";
+import { Header, PlaylistModal, Sidebar } from "../../Components/index";
 import { AiFillHome, AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { MdPlaylistAdd, MdWatchLater } from "react-icons/md";
 import { IoIosShareAlt } from "react-icons/io";
@@ -8,14 +8,15 @@ import "./videoPlayer.css";
 import { useState } from "react";
 export const VideoPage = () => {
   const { videoId } = useParams();
-  const { videos } = useData();
+  const { videos, setModal, dispatch } = useData();
   const [show, setShow] = useState(false);
   const videoForPage = videos.find(({ _id }) => _id === videoId);
   const { _id, description, MovieName, categoryName } = videoForPage;
   return (
     <main>
       <Sidebar />
-      <aside>
+      {setModal && <PlaylistModal prop={videoForPage} />}
+      <aside className="video-page">
         <Header />
         <div className="iframe-wrapper">
           <iframe
@@ -36,7 +37,10 @@ export const VideoPage = () => {
               <IoIosShareAlt />
               Share
             </div>
-            <div className="func-wrapper">
+            <div
+              className="func-wrapper"
+              onClick={() => dispatch({ type: "TOGGLE_MODAL" })}
+            >
               <MdPlaylistAdd />
               Playlist
             </div>

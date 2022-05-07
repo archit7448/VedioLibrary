@@ -6,7 +6,7 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunction, IntialState);
-
+  const encodedToken = localStorage.getItem("token");
   useEffect(() => {
     (async () => {
       try {
@@ -22,12 +22,29 @@ export const DataProvider = ({ children }) => {
     (async () => {
       try {
         const response = await axios.get("/api/videos");
-        dispatch({ type: "ADD_videoS", payload: response.data.videos });
+        dispatch({ type: "ADD_VIDEOS", payload: response.data.videos });
       } catch (error) {
         console.log(error);
       }
     })();
   }, []);
+
+  const AddPlaylist = async () => {
+    try {
+      const response = await axios.get("/api/user/playlists", {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      dispatch({ type: "ADD_PLAYLIST", payload: response.data.playlists });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    encodedToken !== null ? AddPlaylist() : null;
+  }, [encodedToken]);
 
   return (
     <DataContext.Provider
@@ -36,6 +53,9 @@ export const DataProvider = ({ children }) => {
         videos: state.videos,
         filter: state.filter,
         filterData: state.filterData,
+        setModal: state.setModal,
+        playList: state.playlist,
+        dataVideoPlaylist: state.dataVideoPlaylist,
         dispatch,
       }}
     >

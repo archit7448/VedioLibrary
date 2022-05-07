@@ -7,6 +7,7 @@
   object-fit: contain;
   border-radius: 10px;
   cursor: pointer;
+  margin: 3rem;
 }
 .video-card img {
   width: 100%;
@@ -14,9 +15,35 @@
   object-fit: cover;
   border-radius: 10px 10px 0 0;
 }
-.video-card h1{
-    font-weight: 100;
+.video-card h1 {
+  font-weight: 100;
 }
-.video-card div{
-    padding: 1rem;
+.video-data-div {
+  padding: 1rem;
+}
+.video-card-func-wrapper {
+  font-size: 1.4rem;
+  position: relative;
+}
+.video-card-hover {
+  position: absolute;
+  top: 40%;
+  display: flex;
+  flex-direction: column;
+  right: 130%;
+  padding: 0;
+  width: 17rem;
+  border-radius: 2px;
+  background-color: var(--color-background-secondary);
+}
+.video-card h3 {
+  font-weight: 200;
+  margin-top: 2px 0;
+  padding: 5px;
+}
+.video-card h3:hover {
+  background-color: var(--color-icon);
+}
+.video-card-vertical:hover .video-card-hover {
+  display: flex;
 }

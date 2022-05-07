@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { notifySuccess } from "../utility/notification/utility-toast";
 const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
@@ -10,6 +11,7 @@ const AuthProvider = ({ children }) => {
   const successHandler = () => {
     setToken(localStorage.getItem("token"));
     navigate("/explore");
+    notifySuccess("Login Sucess!")
   };
 
   const ErrorHandler = () => {
@@ -48,6 +50,7 @@ const AuthProvider = ({ children }) => {
   const LogOutHandler = () => {
     localStorage.removeItem("token");
     navigate("/")
+    notifySuccess("Logout sucess!")
   };
 
   return (

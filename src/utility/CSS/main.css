@@ -9,6 +9,7 @@
   --color-primary-second: #e50914;
   --color-background-primary: #000000;
   --color-icon: #a9a9a9;
+  --color-background-secondary: #222230;
 }
 
 [data-theme="dark"] {

@@ -1,0 +1,9 @@
+.toast-container {
+  font-size: 1.6rem;
+  background-color: var(--color-background-secondary);
+  color: var(--color-primary-first);
+  width: fit-content;
+}
+.toast-container button {
+  color: var(--color-primary-first);
+}
