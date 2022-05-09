@@ -19,7 +19,6 @@ export const IntialPlayList = (state, action) => {
 
 export const AddVideoToPlaylist = (state, action) => {
   const { playlistData, playlistId } = action.payload;
-  console.log(playlistData,playlistId)
   return {
     ...state,
     playlist: state.playlist.map((playlistToCheck) =>

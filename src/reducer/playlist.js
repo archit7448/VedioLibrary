@@ -42,7 +42,6 @@ export const AddVideoToPlaylist = (video, playlistId, dispatch) => {
         type: "UPDATE_VIDEO_PLAYLIST",
         payload: { playlistData: response.data.playlist, playlistId },
       });
-      console.log(response.data.playlist);
     } catch (error) {
       console.log(error);
     }
