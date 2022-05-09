@@ -1,0 +1,8 @@
+.loader-wrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-background-primary);
+}
+.loader{
+    font-size: 2rem;
+}

@@ -3,14 +3,17 @@ import mainImage from "../../assets/homepage.jpg";
 import "./pages.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useData } from "../../context/data";
+import { Loader } from "../../utility/loader/loader";
 export const HomePage = () => {
-  const { genres, dispatch } = useData();
+  const { genres, dispatch, loaderState } = useData();
   const navigate = useNavigate();
   const GenresHanler = (categoryName) => {
     navigate("/explore");
     dispatch({ type: "ADD_FILTER", payload: categoryName });
   };
-  return (
+  return loaderState ? (
+    <Loader />
+  ) : (
     <main>
       <Sidebar />
       <aside className="flex-col">

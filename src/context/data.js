@@ -1,17 +1,29 @@
 import axios from "axios";
-import { createContext, useContext, useReducer, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useState,
+} from "react";
 import { IntialState, reducerFunction } from "../reducer/reducer";
 
 const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunction, IntialState);
+  const [loaderState, setLoaderState] = useState(false);
   const encodedToken = localStorage.getItem("token");
   useEffect(() => {
     (async () => {
+      setLoaderState(true);
       try {
         const response = await axios.get("/api/categories");
-        dispatch({ type: "ADD_GENRES", payload: response.data.categories });
+        dispatch({
+          type: "ADD_GENRES",
+          payload: response.data.categories,
+        });
+        setTimeout(() => setLoaderState(false),1000)
       } catch (error) {
         console.log(error);
       }
@@ -56,6 +68,8 @@ export const DataProvider = ({ children }) => {
         setModal: state.setModal,
         playList: state.playlist,
         dataVideoPlaylist: state.dataVideoPlaylist,
+        loaderState,
+        setLoaderState,
         dispatch,
       }}
     >
