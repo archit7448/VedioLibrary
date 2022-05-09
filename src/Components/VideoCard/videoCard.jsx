@@ -4,7 +4,6 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import "./videoCard.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { PlaylistModal } from "../modal/modal";
 export const VideoCard = ({ prop }) => {
   const { data } = prop;
   const [show, setShow] = useState(false);
