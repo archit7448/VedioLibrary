@@ -7,7 +7,6 @@ import {
 } from "./intializeData";
 
 const ToggleModal = (state, action) => {
-  console.log(action.payload)
   return {
     ...state,
     setModal: !state.setModal,

@@ -3,7 +3,13 @@ import { MdExplore, MdPlaylistAdd, MdWatchLater } from "react-icons/md";
 import { FaHistory } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import "./sidebar.css";
+import { useData } from "../../context/data";
 export const Sidebar = () => {
+  const { setLoaderState } = useData();
+  const LoaderSidebar = () => {
+    setLoaderState(true);
+    setTimeout(() => setLoaderState(false), 800);
+  };
   return (
     <div className="sidebar">
       <NavLink
@@ -12,7 +18,7 @@ export const Sidebar = () => {
           isActive ? "sidebar-active" : "sidebar-non-active"
         }
       >
-        <div>
+        <div onClick={() => LoaderSidebar()}>
           <h1 className="text-md">
             <AiFillHome />{" "}
           </h1>
@@ -24,7 +30,7 @@ export const Sidebar = () => {
           isActive ? "sidebar-active" : "sidebar-non-active"
         }
       >
-        <div>
+        <div onClick={() => LoaderSidebar()}>
           <h1 className="text-md">
             {" "}
             <MdExplore />{" "}
@@ -37,7 +43,7 @@ export const Sidebar = () => {
           isActive ? "sidebar-active" : "sidebar-non-active"
         }
       >
-        <div>
+        <div onClick={() => LoaderSidebar()}>
           <h1 className="text-md">
             {" "}
             <MdPlaylistAdd />{" "}
@@ -50,7 +56,7 @@ export const Sidebar = () => {
           isActive ? "sidebar-active" : "sidebar-non-active"
         }
       >
-        <div>
+        <div onClick={() => LoaderSidebar()}>
           <h1 className="text-md">
             {" "}
             <AiFillLike />{" "}
@@ -63,7 +69,7 @@ export const Sidebar = () => {
           isActive ? "sidebar-active" : "sidebar-non-active"
         }
       >
-        <div>
+        <div onClick={() => LoaderSidebar()}>
           <h1 className="text-md">
             {" "}
             <MdWatchLater />{" "}
@@ -76,7 +82,7 @@ export const Sidebar = () => {
           isActive ? "sidebar-active" : "sidebar-non-active"
         }
       >
-        <div>
+        <div onClick={() => LoaderSidebar()}>
           <h1 className="text-md">
             {" "}
             <FaHistory />{" "}

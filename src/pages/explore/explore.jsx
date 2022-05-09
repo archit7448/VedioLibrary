@@ -5,11 +5,21 @@ import {
   VideoCard,
 } from "../../Components/index";
 import { useData } from "../../context/data";
+import { Loader } from "../../utility/loader/loader";
 import "./explore.css";
 export const ExplorePage = () => {
-  const { genres, dispatch, filter, filterData, setModal, dataVideoPlaylist } =
-    useData();
-  return (
+  const {
+    genres,
+    dispatch,
+    filter,
+    filterData,
+    setModal,
+    dataVideoPlaylist,
+    loaderState,
+  } = useData();
+  return loaderState ? (
+    <Loader />
+  ) : (
     <main>
       <Sidebar />
       {setModal && <PlaylistModal prop={dataVideoPlaylist} />}

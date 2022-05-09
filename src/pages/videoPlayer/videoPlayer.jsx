@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useData } from "../../context/data";
 import { Header, PlaylistModal, Sidebar } from "../../Components/index";
 import { AiFillHome, AiFillLike, AiOutlineLike } from "react-icons/ai";
@@ -10,8 +10,13 @@ export const VideoPage = () => {
   const { videoId } = useParams();
   const { videos, setModal, dispatch } = useData();
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
   const videoForPage = videos.find(({ _id }) => _id === videoId);
   const { _id, description, MovieName, categoryName } = videoForPage;
+  const PlayListHandler = () => {
+    token !== null ? dispatch({ type: "TOGGLE_MODAL" }) : navigate("/login");
+  };
   return (
     <main>
       <Sidebar />
@@ -37,10 +42,7 @@ export const VideoPage = () => {
               <IoIosShareAlt />
               Share
             </div>
-            <div
-              className="func-wrapper"
-              onClick={() => dispatch({ type: "TOGGLE_MODAL" })}
-            >
+            <div className="func-wrapper" onClick={() => PlayListHandler()}>
               <MdPlaylistAdd />
               Playlist
             </div>

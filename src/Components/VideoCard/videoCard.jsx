@@ -8,8 +8,16 @@ export const VideoCard = ({ prop }) => {
   const { data } = prop;
   const [show, setShow] = useState(false);
   const { dispatch } = useData();
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const { _id, MovieName } = data;
+  const PlayListHandler = () => {
+    if (token !== null) {
+      dispatch({ type: "TOGGLE_MODAL", payload: data });
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <div className="video-card">
       <img
@@ -26,11 +34,7 @@ export const VideoCard = ({ prop }) => {
                 <MdWatchLater />
                 Add to WatchLater
               </h3>
-              <h3
-                onClick={() =>
-                  dispatch({ type: "TOGGLE_MODAL", payload: data })
-                }
-              >
+              <h3 onClick={() => PlayListHandler()}>
                 <MdPlaylistAdd />
                 Add to Playlist
               </h3>

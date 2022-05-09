@@ -5,40 +5,46 @@
   z-index: 999;
   position: fixed;
 }
-.modal{
-    font-size: 1.6rem;
-    width:30rem;
-    background-color: var(--color-background-primary);
-    padding: 2rem;
-    box-sizing: border-box;
-    border-radius: 5px;
+.modal {
+  font-size: 1.6rem;
+  width: 30rem;
+  background-color: var(--color-background-primary);
+  padding: 2rem;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
-.button-playlist{
-    width: 100%;
-    margin: 0;
-    margin-top: 1rem;
-    padding: 5px 0;
-    font-size: 1.6rem;
+.button-playlist {
+  width: 100%;
+  margin: 0;
+  margin-top: 1rem;
+  padding: 5px 0;
+  font-size: 1.6rem;
 }
-.button-cross-modal{
-    cursor: pointer;
+.button-cross-modal {
+  cursor: pointer;
 }
-.playlist-input{
- margin-top: 2rem;   
+.playlist-input {
+  margin-top: 2rem;
 }
-.playlist-input input{
-    background-color:var(--color-primary-first);
-    border: 0px;
-    margin: 0 8px;
-    border-radius: 4px;
+input[type="text"] {
+  background-color: var(--color-primary-first);
+  border: 0px;
+  margin: 0 8px;
+  border-radius: 4px;
 }
-.playlist-input input:hover{
-    outline: 2px solid var(--color-primary-second);
+.playlist-input input:hover {
+  outline: 2px solid var(--color-primary-second);
 }
-input[type="checkbox"]{
-    transform: scale(1.2);
+input[type="checkbox"] {
+  transform: scale(1.2);
 }
-label{
-    font-size: 2rem;
-    margin: 0 2rem;
+label {
+  font-size: 2rem;
+  margin: 0 2rem;
+}
+
+@media only screen and (max-width: "480px") {
+  .modal {
+    width: 80%;
+  }
 }

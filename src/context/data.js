@@ -23,7 +23,7 @@ export const DataProvider = ({ children }) => {
           type: "ADD_GENRES",
           payload: response.data.categories,
         });
-        setTimeout(() => setLoaderState(false),1000)
+        setTimeout(() => setLoaderState(false), 2000);
       } catch (error) {
         console.log(error);
       }
@@ -32,12 +32,14 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     (async () => {
+      setLoaderState(true);
       try {
         const response = await axios.get("/api/videos");
         dispatch({ type: "ADD_VIDEOS", payload: response.data.videos });
       } catch (error) {
         console.log(error);
       }
+      setTimeout(() => setLoaderState(false), 2000);
     })();
   }, []);
 
