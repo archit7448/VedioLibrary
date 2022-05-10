@@ -2,8 +2,19 @@
   font-size: 1.6rem;
   background-color: var(--color-background-secondary);
   color: var(--color-primary-first);
-  width: fit-content;
 }
+.Toastify__toast-container {
+  padding: 0rem;
+}
+
 .toast-container button {
   color: var(--color-primary-first);
+}
+
+@media only screen and (max-width: 480px) {
+  .toast-container {
+    position: relative;
+    width: 30rem;
+    margin: 3rem auto;
+  }
 }
