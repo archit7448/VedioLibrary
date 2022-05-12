@@ -14,6 +14,7 @@ export const VideoCard = ({ prop }) => {
   const PlayListHandler = () => {
     if (token !== null) {
       dispatch({ type: "TOGGLE_MODAL", payload: data });
+      setShow((show) => !show);
     } else {
       navigate("/login");
     }

@@ -23,7 +23,7 @@ export const DataProvider = ({ children }) => {
           type: "ADD_GENRES",
           payload: response.data.categories,
         });
-        setTimeout(() => setLoaderState(false), 2000);
+        setTimeout(() => setLoaderState(false), 1000);
       } catch (error) {
         console.log(error);
       }
@@ -39,7 +39,7 @@ export const DataProvider = ({ children }) => {
       } catch (error) {
         console.log(error);
       }
-      setTimeout(() => setLoaderState(false), 2000);
+      setTimeout(() => setLoaderState(false), 1000);
     })();
   }, []);
 

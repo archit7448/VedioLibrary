@@ -69,3 +69,22 @@ export const RemoveVideoFromPlaylist = (video, playlistId, dispatch) => {
     }
   })();
 };
+
+export const RemovePlaylist = (playlistId, dispatch) => {
+  (async () => {
+    try {
+      const response = await axios.delete(`/api/user/playlists/${playlistId}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      console.log(response.data.playlists);
+      dispatch({
+        type: "ADD_PLAYLIST",
+        payload: response.data.playlists,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  })();
+};

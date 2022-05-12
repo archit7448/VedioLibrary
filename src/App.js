@@ -12,6 +12,7 @@ import {
   LogInPage,
   SignUpPage,
   VideoPage,
+  PageForEachPlaylist,
 } from "./pages/index";
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<LogInPage />} />
         <Route path="/signUp" element={<SignUpPage />} />
         <Route path="/explore/:videoId" element={<VideoPage />} />
+        <Route path="/playlist/:playlistId" element={<PageForEachPlaylist />} />
       </Routes>
       <ToastContainer />
     </div>
