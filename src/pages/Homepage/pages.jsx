@@ -1,16 +1,27 @@
 import { Header, Sidebar } from "../../Components/index";
 import mainImage from "../../assets/homepage.jpg";
 import "./pages.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useData } from "../../context/data";
+import { Loader } from "../../utility/loader/loader";
 export const HomePage = () => {
-  const { genres, dispatch } = useData();
+  const { genres, dispatch, loaderState, setLoaderState } = useData();
   const navigate = useNavigate();
   const GenresHanler = (categoryName) => {
-    navigate("/explore");
-    dispatch({ type: "ADD_FILTER", payload: categoryName });
+    if (categoryName) {
+      setLoaderState(true);
+      setTimeout(() => setLoaderState(false), 800);
+      navigate("/explore");
+      dispatch({ type: "ADD_FILTER", payload: categoryName });
+    } else {
+      setLoaderState(true);
+      setTimeout(() => setLoaderState(false), 800);
+      navigate("explore");
+    }
   };
-  return (
+  return loaderState ? (
+    <Loader />
+  ) : (
     <main>
       <Sidebar />
       <aside className="flex-col">
@@ -23,7 +34,7 @@ export const HomePage = () => {
             </h1>
             <button
               className="button-primary button-explore"
-              onClick={() => navigate("/explore")}
+              onClick={() => GenresHanler()}
             >
               EXPLORE
             </button>

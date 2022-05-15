@@ -1,3 +1,6 @@
+.video-page{
+  position: relative;
+}
 .iframe-wrapper {
   width: 70rem;
   margin-left: 10rem;

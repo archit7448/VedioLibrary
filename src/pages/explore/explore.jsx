@@ -1,11 +1,28 @@
-import { Header, Sidebar, VideoCard } from "../../Components/index";
+import {
+  Header,
+  PlaylistModal,
+  Sidebar,
+  VideoCard,
+} from "../../Components/index";
 import { useData } from "../../context/data";
+import { Loader } from "../../utility/loader/loader";
 import "./explore.css";
 export const ExplorePage = () => {
-  const { genres, dispatch, filter } = useData();
-  return (
+  const {
+    genres,
+    dispatch,
+    filter,
+    filterData,
+    setModal,
+    dataVideoPlaylist,
+    loaderState,
+  } = useData();
+  return loaderState ? (
+    <Loader />
+  ) : (
     <main>
       <Sidebar />
+      {setModal && <PlaylistModal prop={dataVideoPlaylist} />}
       <aside>
         <Header />
         <div className="flex-row filter-wrapper">
@@ -38,7 +55,10 @@ export const ExplorePage = () => {
           })}
         </div>
         <div className="video-wrapper">
-          <VideoCard />
+          {filterData.map((data) => {
+            const { _id } = data;
+            return <VideoCard prop={{ data }} key={_id} />;
+          })}
         </div>
       </aside>
     </main>

@@ -9,3 +9,20 @@ export const Intialvideo = (state, action) => {
     filterData: [...action.payload],
   };
 };
+
+export const IntialPlayList = (state, action) => {
+  return {
+    ...state,
+    playlist: [...action.payload],
+  };
+};
+
+export const AddVideoToPlaylist = (state, action) => {
+  const { playlistData, playlistId } = action.payload;
+  return {
+    ...state,
+    playlist: state.playlist.map((playlistToCheck) =>
+      playlistToCheck._id !== playlistId ? playlistToCheck : playlistData
+    ),
+  };
+};
