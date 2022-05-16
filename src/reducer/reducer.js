@@ -4,6 +4,9 @@ import {
   Intialvideo,
   IntialPlayList,
   AddVideoToPlaylist,
+  AddLiked,
+  UpdateWatchLater,
+  UpdateHistory,
 } from "./intializeData";
 
 const ToggleModal = (state, action) => {
@@ -21,6 +24,9 @@ const reducer = {
   ADD_PLAYLIST: IntialPlayList,
   TOGGLE_MODAL: ToggleModal,
   UPDATE_VIDEO_PLAYLIST: AddVideoToPlaylist,
+  UPDATE_LIKES: AddLiked,
+  UPDATE_WATCHLATER: UpdateWatchLater,
+  UPDATE_HISTORY: UpdateHistory,
 };
 
 export const reducerFunction = (state, action) => {
@@ -34,5 +40,8 @@ export const IntialState = {
   filter: "All",
   setModal: false,
   filterData: [],
+  liked: [],
+  watchLater: [],
   dataVideoPlaylist: {},
+  history: [],
 };

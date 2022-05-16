@@ -56,8 +56,53 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  const AddLiked = async () => {
+    try {
+      const response = await axios.get("/api/user/likes", {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      dispatch({ type: "UPDATE_LIKES", payload: response.data.likes });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const AddWatchLater = async () => {
+    try {
+      const response = await axios.get("/api/user/watchlater", {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      dispatch({
+        type: "UPDATE_WATCHLATER",
+        payload: response.data.watchlater,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const AddHistory = async () => {
+    try {
+      const response = await axios.get("/api/user/history", {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      dispatch({
+        type: "UPDATE_HISTORY",
+        payload: response.data.history,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    encodedToken !== null ? AddPlaylist() : null;
+    encodedToken !== null
+      ? AddPlaylist() && AddLiked() && AddWatchLater() && AddHistory()
+      : null;
   }, [encodedToken]);
 
   return (
@@ -70,6 +115,10 @@ export const DataProvider = ({ children }) => {
         setModal: state.setModal,
         playList: state.playlist,
         dataVideoPlaylist: state.dataVideoPlaylist,
+        liked: state.liked,
+        watchLater: state.watchLater,
+        history: state.history,
+        
         loaderState,
         setLoaderState,
         dispatch,

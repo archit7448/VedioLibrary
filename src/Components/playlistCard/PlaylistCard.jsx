@@ -7,7 +7,6 @@ import { useData } from "../../context/data";
 export const PlaylistCard = ({ prop }) => {
   const { playlistEach } = prop;
   const { dispatch } = useData();
-  console.log(playlistEach);
   const { videos, title, _id } = playlistEach;
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
