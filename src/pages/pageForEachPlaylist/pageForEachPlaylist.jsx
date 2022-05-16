@@ -7,7 +7,6 @@ export const PageForEachPlaylist = () => {
   const { playList, setModal, dataVideoPlaylist } = useData();
   const pagePlaylist = playList.find(({ _id }) => _id === playlistId);
   const { videos } = pagePlaylist;
-  console.log(playlistId, playList);
   return (
     <main>
       <Sidebar />

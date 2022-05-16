@@ -19,8 +19,12 @@
 .flex-space-between {
   justify-content: space-between;
 }
-.flex-wrap{
+.flex-wrap {
   flex-wrap: wrap;
+}
+.flex-width {
+  height: 70vh;
+  width: 100%;
 }
 /* Button */
 

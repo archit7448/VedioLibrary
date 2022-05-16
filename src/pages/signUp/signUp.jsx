@@ -14,20 +14,20 @@ export const SignUpPage = () => {
       <Sidebar />
       <aside>
         <Header />
-        <div className="login-container">
+        <div className="login-container signUp-container">
           <h1 className="login-heading">Sign Up</h1>
           <h3 className="login-small-heading">First Name</h3>
           <input
             type="text"
             value={firstName}
-            placeholder="Enter Email"
+            placeholder="Enter FirstName"
             onChange={(event) => setFirstName(event.target.value)}
           />
           <h3 className="login-small-heading">Last Name</h3>
           <input
             type="text"
             value={lastName}
-            placeholder="Enter Email"
+            placeholder="Enter LastName"
             onChange={(event) => setLastName(event.target.value)}
           />
           <h3 className="login-small-heading">Email</h3>

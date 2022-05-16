@@ -69,7 +69,7 @@ export const VideoPage = () => {
         <Header />
         <div className="iframe-wrapper">
           <iframe
-            src={`https://www.youtube.com/embed/${_id}`}
+            src={`https://www.youtube.com/embed/${_id}?autoplay=1`}
             allowFullScreen="allowFullScreen"
           />
           <h2 className="category-tag">{`#${categoryName}`}</h2>

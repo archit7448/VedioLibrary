@@ -83,10 +83,25 @@ export const DataProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const AddHistory = async () => {
+    try {
+      const response = await axios.get("/api/user/history", {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      dispatch({
+        type: "UPDATE_HISTORY",
+        payload: response.data.history,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     encodedToken !== null
-      ? AddPlaylist() && AddLiked() && AddWatchLater()
+      ? AddPlaylist() && AddLiked() && AddWatchLater() && AddHistory()
       : null;
   }, [encodedToken]);
 
@@ -102,6 +117,7 @@ export const DataProvider = ({ children }) => {
         dataVideoPlaylist: state.dataVideoPlaylist,
         liked: state.liked,
         watchLater: state.watchLater,
+        history: state.history,
         loaderState,
         setLoaderState,
         dispatch,

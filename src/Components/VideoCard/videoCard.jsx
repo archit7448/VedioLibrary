@@ -5,14 +5,16 @@ import "./videoCard.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AddWatchLater } from "../../reducer/watchLater";
+import { AddHistory } from "../../reducer/history";
 import { notifyMessage } from "../../utility/notification/utility-toast";
 export const VideoCard = ({ prop }) => {
   const { data } = prop;
   const [show, setShow] = useState(false);
-  const { dispatch, watchLater } = useData();
+  const { dispatch, watchLater, history } = useData();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const { _id, MovieName } = data;
+  //Playlist Handler
   const PlayListHandler = () => {
     if (token !== null) {
       dispatch({ type: "TOGGLE_MODAL", payload: data });
@@ -21,6 +23,7 @@ export const VideoCard = ({ prop }) => {
       navigate("/login");
     }
   };
+  //Watch Later Handler
   const WatchHandler = (WatchLaterId) => {
     setShow(false);
     if (token !== null) {
@@ -29,8 +32,22 @@ export const VideoCard = ({ prop }) => {
       } else {
         AddWatchLater(data, dispatch);
       }
-    }else{
-      navigate("/login")
+    } else {
+      navigate("/login");
+    }
+  };
+  // History Handler
+
+  const HistoryHandler = (historyId) => {
+    if (token !== null) {
+      if (history.find(({ _id }) => _id === historyId)) {
+        navigate(`/explore/${_id}`);
+      } else {
+        navigate(`/explore/${_id}`);
+        AddHistory(data, dispatch);
+      }
+    } else {
+      navigate(`/explore/${_id}`);
     }
   };
 
@@ -38,7 +55,7 @@ export const VideoCard = ({ prop }) => {
     <div className="video-card">
       <img
         src={`https://i.ytimg.com/vi/${_id}/maxresdefault.jpg`}
-        onClick={() => navigate(`/explore/${_id}`)}
+        onClick={() => HistoryHandler(_id)}
       />
       <div className="flex-row flex-space-between flex-center video-data-div">
         <h1 className="text-sm">{MovieName}</h1>
