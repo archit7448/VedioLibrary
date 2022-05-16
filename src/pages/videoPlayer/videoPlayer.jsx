@@ -1,22 +1,66 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useData } from "../../context/data";
 import { Header, PlaylistModal, Sidebar } from "../../Components/index";
-import { AiFillHome, AiFillLike, AiOutlineLike } from "react-icons/ai";
+import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { MdPlaylistAdd, MdWatchLater } from "react-icons/md";
 import { IoIosShareAlt } from "react-icons/io";
 import "./videoPlayer.css";
 import { useState } from "react";
+import { LikeVideo, UnlikeVideo } from "../../reducer/like";
+import { AddWatchLater } from "../../reducer/watchLater";
+import { notifyMessage } from "../../utility/notification/utility-toast";
+import copy from "copy-to-clipboard";
 export const VideoPage = () => {
   const { videoId } = useParams();
-  const { videos, setModal, dispatch } = useData();
+  const { videos, setModal, dispatch, liked, watchLater } = useData();
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const token = localStorage.getItem("token");
   const videoForPage = videos.find(({ _id }) => _id === videoId);
   const { _id, description, MovieName, categoryName } = videoForPage;
+  //ForPlaylist
+
   const PlayListHandler = () => {
     token !== null ? dispatch({ type: "TOGGLE_MODAL" }) : navigate("/login");
   };
+
+  ///For Liked Handler
+  const CheckLiked = (videoLikedId) => {
+    return liked.find(({ _id }) => _id === videoLikedId) === undefined
+      ? false
+      : true;
+  };
+
+  const LikedHandler = () => {
+    if (token !== null) {
+      CheckLiked(_id)
+        ? UnlikeVideo(_id, dispatch)
+        : LikeVideo(videoForPage, dispatch);
+    } else {
+      navigate("/login");
+    }
+  };
+
+  ///For WatchLater
+  const WatchHandler = (WatchLaterId) => {
+    if (token !== null) {
+      if (watchLater.find(({}) => _id === WatchLaterId)) {
+        notifyMessage("Already in Watch Later");
+      } else {
+        AddWatchLater(videoForPage, dispatch);
+      }
+    } else {
+      navigate("/login");
+    }
+  };
+
+  //For Share
+  const CopyToClipBoard = () => {
+    copy(`https://strangelibrary.netlify.app${location.pathname}`);
+    notifyMessage("Copied sucessfully");
+  };
+
   return (
     <main>
       <Sidebar />
@@ -31,14 +75,14 @@ export const VideoPage = () => {
           <h2 className="category-tag">{`#${categoryName}`}</h2>
           <h1 className="movie-tag">{MovieName}</h1>
           <div className="flex-row ">
-            <div className="func-wrapper">
-              <AiOutlineLike />
-              Like
+            <div className="func-wrapper" onClick={() => LikedHandler()}>
+              {CheckLiked(_id) ? <AiFillLike /> : <AiOutlineLike />}
+              {CheckLiked(_id) ? "Liked" : "Like"}
             </div>
-            <div className="func-wrapper">
+            <div className="func-wrapper" onClick={() => WatchHandler(_id)}>
               <MdWatchLater /> WatchLater
             </div>
-            <div className="func-wrapper">
+            <div className="func-wrapper" onClick={() => CopyToClipBoard()}>
               <IoIosShareAlt />
               Share
             </div>

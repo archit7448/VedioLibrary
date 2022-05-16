@@ -26,3 +26,11 @@ export const AddVideoToPlaylist = (state, action) => {
     ),
   };
 };
+
+export const AddLiked = (state, action) => {
+  return { ...state, liked: [...action.payload] };
+};
+
+export const AddWatchLater = (state, action) => {
+  return { ...state, watchLater: [...action.payload] };
+};

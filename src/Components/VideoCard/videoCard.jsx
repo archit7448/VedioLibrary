@@ -4,10 +4,12 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import "./videoCard.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { AddWatchLater } from "../../reducer/watchLater";
+import { notifyMessage } from "../../utility/notification/utility-toast";
 export const VideoCard = ({ prop }) => {
   const { data } = prop;
   const [show, setShow] = useState(false);
-  const { dispatch } = useData();
+  const { dispatch, watchLater } = useData();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const { _id, MovieName } = data;
@@ -19,6 +21,19 @@ export const VideoCard = ({ prop }) => {
       navigate("/login");
     }
   };
+  const WatchHandler = (WatchLaterId) => {
+    setShow(false);
+    if (token !== null) {
+      if (watchLater.find(({ _id }) => _id === WatchLaterId)) {
+        notifyMessage("Already in Watch Later");
+      } else {
+        AddWatchLater(data, dispatch);
+      }
+    }else{
+      navigate("/login")
+    }
+  };
+
   return (
     <div className="video-card">
       <img
@@ -30,7 +45,7 @@ export const VideoCard = ({ prop }) => {
         <div className="video-card-func-wrapper flex-row">
           {show && (
             <div className="video-card-hover">
-              <h3>
+              <h3 onClick={() => WatchHandler(_id)}>
                 {" "}
                 <MdWatchLater />
                 Add to WatchLater
