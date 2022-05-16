@@ -2,15 +2,19 @@ import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { notifySuccess } from "../utility/notification/utility-toast";
+import { useData } from "./data";
 const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+  const {setLoaderState} = useData()
   const [token, setToken] = useState(localStorage.getItem("token"));
 
   const successHandler = () => {
     setToken(localStorage.getItem("token"));
+    setLoaderState(false)
     navigate("/explore");
+    setTimeout(() => setLoaderState(true),1000)
     notifySuccess("Login Sucess!")
   };
 

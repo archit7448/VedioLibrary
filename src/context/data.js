@@ -118,6 +118,7 @@ export const DataProvider = ({ children }) => {
         liked: state.liked,
         watchLater: state.watchLater,
         history: state.history,
+        
         loaderState,
         setLoaderState,
         dispatch,
