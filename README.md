@@ -24,6 +24,8 @@ https://user-images.githubusercontent.com/87135461/169646560-2b0c83af-9cc1-4db4-
 
 ## Features 
 
+### Highly mobile responsive
+
 ### From Sidebar
 
 - Navigate to home,explore,watchHistory,playlist,watchLater and liked
