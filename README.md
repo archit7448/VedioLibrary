@@ -7,6 +7,10 @@
  
 
 
+https://user-images.githubusercontent.com/87135461/169646560-2b0c83af-9cc1-4db4-beb5-8bfc86fd9b11.mp4
+
+
+
   
 # [Live Website](https://strangelibrary.netlify.app/)
   
@@ -82,6 +86,13 @@
 - share
 
 ---
+
+### Running locally
+
+- git clone command 
+- cd videoLibrary
+- npm start 
+- Will run locally
 
 ## ⚠️ Caution
 
