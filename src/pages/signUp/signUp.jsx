@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useAuth } from "../../context/Auth";
 import { useNavigate } from "react-router-dom";
 import { validateEmail } from "../../utility/emailValidation/email";
+import { notifyMessage } from "../../utility/notification/utility-toast";
 export const SignUpPage = () => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
@@ -12,19 +13,17 @@ export const SignUpPage = () => {
   const { SignUpHandler } = useAuth();
 
   const VerificationCheck = () => {
-    console.log(validateEmail(email));
-    if (
-      firstName.length > 1 &&
-      lastName.length > 1 &&
-      password.length > 1 &&
-      validateEmail(email)
-    ) {
-      SignUpHandler({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-      });
+    if (validateEmail(email)) {
+      if (firstName.length > 1 && lastName.length > 1 && password.length > 1) {
+        SignUpHandler({
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+        });
+      }
+    } else {
+      notifyMessage("Invalid Email");
     }
   };
 
