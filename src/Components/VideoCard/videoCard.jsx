@@ -10,8 +10,7 @@ import { notifyMessage } from "../../utility/notification/utility-toast";
 export const VideoCard = ({ prop }) => {
   const { data } = prop;
   const [show, setShow] = useState(false);
-  const { dispatch, watchLater, history } = useData();
-  const token = localStorage.getItem("token");
+  const { dispatch, watchLater, history, token } = useData();
   const navigate = useNavigate();
   const { _id, MovieName } = data;
   //Playlist Handler
@@ -30,7 +29,7 @@ export const VideoCard = ({ prop }) => {
       if (watchLater.find(({ _id }) => _id === WatchLaterId)) {
         notifyMessage("Already in Watch Later");
       } else {
-        AddWatchLater(data, dispatch);
+        AddWatchLater({ token, video: data }, dispatch);
       }
     } else {
       navigate("/login");
@@ -44,7 +43,7 @@ export const VideoCard = ({ prop }) => {
         navigate(`/explore/${_id}`);
       } else {
         navigate(`/explore/${_id}`);
-        AddHistory(data, dispatch);
+        AddHistory({ token, video: data }, dispatch);
       }
     } else {
       navigate(`/explore/${_id}`);

@@ -1,9 +1,10 @@
 import "./header.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/Auth";
+import { useData } from "../../context/data";
 export const Header = () => {
   const { LogOutHandler } = useAuth();
-  const token = localStorage.getItem("token");
+  const { token } = useData();
   return (
     <div className="header flex-row flex-space-between">
       <Link to="/">

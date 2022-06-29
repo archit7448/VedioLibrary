@@ -6,7 +6,7 @@ import { RemovePlaylist } from "../../reducer/playlist";
 import { useData } from "../../context/data";
 export const PlaylistCard = ({ prop }) => {
   const { playlistEach } = prop;
-  const { dispatch } = useData();
+  const { dispatch, token } = useData();
   const { videos, title, _id } = playlistEach;
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
@@ -21,7 +21,11 @@ export const PlaylistCard = ({ prop }) => {
         <div className="video-card-func-wrapper flex-row">
           {show && (
             <div className="video-card-hover playlist-card-hover">
-              <h3 onClick={() => RemovePlaylist(_id, dispatch)}>
+              <h3
+                onClick={() =>
+                  RemovePlaylist({ playlistId: _id, token }, dispatch)
+                }
+              >
                 {" "}
                 <AiFillDelete />
                 Delete Playlist

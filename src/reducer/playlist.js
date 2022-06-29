@@ -1,13 +1,12 @@
 import axios from "axios";
-const token = localStorage.getItem("token");
-export const AddPlayList = (payload, dispatch) => {
+export const AddPlayList = ({ value, token }, dispatch) => {
   (async () => {
     try {
       const response = await axios.post(
         "/api/user/playlists",
         {
           playlist: {
-            title: payload,
+            title: value,
             description: "",
           },
         },
@@ -24,7 +23,7 @@ export const AddPlayList = (payload, dispatch) => {
   })();
 };
 
-export const AddVideoToPlaylist = (video, playlistId, dispatch) => {
+export const AddVideoToPlaylist = ({ video, playlistId, token }, dispatch) => {
   (async () => {
     try {
       const response = await axios.post(
@@ -48,7 +47,10 @@ export const AddVideoToPlaylist = (video, playlistId, dispatch) => {
   })();
 };
 
-export const RemoveVideoFromPlaylist = (video, playlistId, dispatch) => {
+export const RemoveVideoFromPlaylist = (
+  { video, playlistId, token },
+  dispatch
+) => {
   const { _id } = video;
   (async () => {
     try {
@@ -70,7 +72,7 @@ export const RemoveVideoFromPlaylist = (video, playlistId, dispatch) => {
   })();
 };
 
-export const RemovePlaylist = (playlistId, dispatch) => {
+export const RemovePlaylist = ({ playlistId, token }, dispatch) => {
   (async () => {
     try {
       const response = await axios.delete(`/api/user/playlists/${playlistId}`, {

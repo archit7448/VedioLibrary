@@ -1,5 +1,4 @@
-/**
- * Videos Database can be added here.
+/* * Videos Database can be added here.
  * You can add videos of your wish with different attributes
  * */
 

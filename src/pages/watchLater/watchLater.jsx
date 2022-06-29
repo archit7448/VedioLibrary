@@ -4,12 +4,11 @@ import { useData } from "../../context/data";
 import { RemoveWatchLater } from "../../reducer/watchLater";
 
 export const WatchLaterPage = () => {
-  const { watchLater, dispatch } = useData();
-  const DeleteHandler = (id, setShow) => {
+  const { watchLater, dispatch, token } = useData();
+  const DeleteHandler = (videoId, setShow) => {
     setShow(false);
-    RemoveWatchLater(id, dispatch);
+    RemoveWatchLater({ videoId, token }, dispatch);
   };
-  const token = localStorage.getItem("token");
   const navigate = useNavigate();
   return (
     <main>

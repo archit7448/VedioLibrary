@@ -1,6 +1,5 @@
 import axios from "axios";
-const token = localStorage.getItem("token");
-export const LikeVideo = (video, dispatch) => {
+export const LikeVideo = ({ token, video }, dispatch) => {
   (async () => {
     try {
       const response = await axios.post(
@@ -21,10 +20,10 @@ export const LikeVideo = (video, dispatch) => {
   })();
 };
 
-export const UnlikeVideo = (videoId, dispatch) => {
+export const UnlikeVideo = ( { _id, token }, dispatch) => { 
   (async () => {
     try {
-      const response = await axios.delete(`/api/user/likes/${videoId}`, {
+      const response = await axios.delete(`/api/user/likes/${_id}`, {
         headers: {
           authorization: token,
         },

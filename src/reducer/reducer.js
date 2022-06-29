@@ -17,6 +17,13 @@ const ToggleModal = (state, action) => {
   };
 };
 
+const updateToken = (state) => {
+  return {
+    ...state,
+    token: localStorage.getItem("token"),
+  };
+};
+
 const reducer = {
   ADD_GENRES: IntialGenres,
   ADD_VIDEOS: Intialvideo,
@@ -27,6 +34,7 @@ const reducer = {
   UPDATE_LIKES: AddLiked,
   UPDATE_WATCHLATER: UpdateWatchLater,
   UPDATE_HISTORY: UpdateHistory,
+  UPDATE_TOKEN: updateToken,
 };
 
 export const reducerFunction = (state, action) => {
@@ -44,4 +52,5 @@ export const IntialState = {
   watchLater: [],
   dataVideoPlaylist: {},
   history: [],
+  token: null,
 };

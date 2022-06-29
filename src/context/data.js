@@ -13,7 +13,7 @@ const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunction, IntialState);
   const [loaderState, setLoaderState] = useState(false);
-  const encodedToken = localStorage.getItem("token");
+  const { token } = state;
   useEffect(() => {
     (async () => {
       setLoaderState(true);
@@ -47,7 +47,7 @@ export const DataProvider = ({ children }) => {
     try {
       const response = await axios.get("/api/user/playlists", {
         headers: {
-          authorization: encodedToken,
+          authorization: token,
         },
       });
       dispatch({ type: "ADD_PLAYLIST", payload: response.data.playlists });
@@ -60,7 +60,7 @@ export const DataProvider = ({ children }) => {
     try {
       const response = await axios.get("/api/user/likes", {
         headers: {
-          authorization: encodedToken,
+          authorization: token,
         },
       });
       dispatch({ type: "UPDATE_LIKES", payload: response.data.likes });
@@ -72,7 +72,7 @@ export const DataProvider = ({ children }) => {
     try {
       const response = await axios.get("/api/user/watchlater", {
         headers: {
-          authorization: encodedToken,
+          authorization: token,
         },
       });
       dispatch({
@@ -87,7 +87,7 @@ export const DataProvider = ({ children }) => {
     try {
       const response = await axios.get("/api/user/history", {
         headers: {
-          authorization: encodedToken,
+          authorization: token,
         },
       });
       dispatch({
@@ -100,10 +100,14 @@ export const DataProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    encodedToken !== null
+    dispatch({ type: "UPDATE_TOKEN" });
+  }, []);
+
+  useEffect(() => {
+    token !== null
       ? AddPlaylist() && AddLiked() && AddWatchLater() && AddHistory()
       : null;
-  }, [encodedToken]);
+  }, [token]);
 
   return (
     <DataContext.Provider
@@ -118,7 +122,7 @@ export const DataProvider = ({ children }) => {
         liked: state.liked,
         watchLater: state.watchLater,
         history: state.history,
-        
+        token: state.token,
         loaderState,
         setLoaderState,
         dispatch,

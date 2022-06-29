@@ -2,6 +2,7 @@ import { Header, Sidebar } from "../../Components/index";
 import { useState } from "react";
 import { useAuth } from "../../context/Auth";
 import { useNavigate } from "react-router-dom";
+import { validateEmail } from "../../utility/emailValidation/email";
 export const SignUpPage = () => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
@@ -9,6 +10,24 @@ export const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { SignUpHandler } = useAuth();
+
+  const VerificationCheck = () => {
+    console.log(validateEmail(email));
+    if (
+      firstName.length > 1 &&
+      lastName.length > 1 &&
+      password.length > 1 &&
+      validateEmail(email)
+    ) {
+      SignUpHandler({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+      });
+    }
+  };
+
   return (
     <main>
       <Sidebar />
@@ -46,14 +65,7 @@ export const SignUpPage = () => {
           />
           <button
             className="button-primary button-login"
-            onClick={() =>
-              SignUpHandler({
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: password,
-              })
-            }
+            onClick={() => VerificationCheck()}
           >
             Sign Up
           </button>

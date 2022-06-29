@@ -1,7 +1,6 @@
 import axios from "axios";
 import { notifyMessage } from "../utility/notification/utility-toast";
-const token = localStorage.getItem("token");
-export const AddWatchLater = (video, dispatch) => {
+export const AddWatchLater = ({ token, video }, dispatch) => {
   (async () => {
     try {
       const response = await axios.post(
@@ -19,14 +18,14 @@ export const AddWatchLater = (video, dispatch) => {
         type: "UPDATE_WATCHLATER",
         payload: response.data.watchlater,
       });
-      notifyMessage("Added to Watchlater")
+      notifyMessage("Added to Watchlater");
     } catch (error) {
       console.log(error);
     }
   })();
 };
 
-export const RemoveWatchLater = (videoId, dispatch) => {
+export const RemoveWatchLater = ({ videoId, token }, dispatch) => {
   (async () => {
     try {
       const response = await axios.delete(`/api/user/watchlater/${videoId}`, {

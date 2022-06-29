@@ -6,7 +6,7 @@ export const LikedPage = () => {
   const { liked, dispatch } = useData();
   const DeleteHandler = (videoId, setShow) => {
     setShow(false);
-    UnlikeVideo(videoId, dispatch);
+    UnlikeVideo({ _id: videoId, token }, dispatch);
   };
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
