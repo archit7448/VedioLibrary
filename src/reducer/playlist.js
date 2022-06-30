@@ -1,5 +1,5 @@
 import axios from "axios";
-export const AddPlayList = ({ value, token }, dispatch) => {
+export const addPlaylist = ({ value, token }, dispatch) => {
   (async () => {
     try {
       const response = await axios.post(
@@ -23,7 +23,7 @@ export const AddPlayList = ({ value, token }, dispatch) => {
   })();
 };
 
-export const AddVideoToPlaylist = ({ video, playlistId, token }, dispatch) => {
+export const addVideoToPlaylist = ({ video, playlistId, token }, dispatch) => {
   (async () => {
     try {
       const response = await axios.post(
@@ -47,7 +47,7 @@ export const AddVideoToPlaylist = ({ video, playlistId, token }, dispatch) => {
   })();
 };
 
-export const RemoveVideoFromPlaylist = (
+export const removeVideoFromPlaylist = (
   { video, playlistId, token },
   dispatch
 ) => {
@@ -72,7 +72,7 @@ export const RemoveVideoFromPlaylist = (
   })();
 };
 
-export const RemovePlaylist = ({ playlistId, token }, dispatch) => {
+export const removePlaylist = ({ playlistId, token }, dispatch) => {
   (async () => {
     try {
       const response = await axios.delete(`/api/user/playlists/${playlistId}`, {

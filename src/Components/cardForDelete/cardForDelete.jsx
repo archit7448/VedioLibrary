@@ -18,10 +18,11 @@ export const CardForDelete = ({ prop }) => {
         <div className="video-card-func-wrapper flex-row">
           {show && (
             <div className="video-card-hover playlist-card-hover">
-              <h3 onClick={() => DeleteHandler(_id,setShow)}>
+              <button onClick={() => DeleteHandler(_id, setShow)} W>
+                {" "}
                 <AiFillDelete />
                 {DeleteName}
-              </h3>
+              </button>
             </div>
           )}
           <div

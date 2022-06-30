@@ -16,7 +16,6 @@ import {
   RestrictedRoute,
 } from "./pages/index";
 function App() {
-  document.title = "StrangeLibrary";
   return (
     <div className="App">
       <Routes>

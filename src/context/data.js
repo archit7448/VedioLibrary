@@ -43,7 +43,7 @@ export const DataProvider = ({ children }) => {
     })();
   }, []);
 
-  const AddPlaylist = async () => {
+  const addPlaylist = async () => {
     try {
       const response = await axios.get("/api/user/playlists", {
         headers: {
@@ -56,7 +56,7 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const AddLiked = async () => {
+  const addLiked = async () => {
     try {
       const response = await axios.get("/api/user/likes", {
         headers: {
@@ -68,7 +68,7 @@ export const DataProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const AddWatchLater = async () => {
+  const addWatchLater = async () => {
     try {
       const response = await axios.get("/api/user/watchlater", {
         headers: {
@@ -83,7 +83,7 @@ export const DataProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const AddHistory = async () => {
+  const addHistory = async () => {
     try {
       const response = await axios.get("/api/user/history", {
         headers: {
@@ -100,12 +100,12 @@ export const DataProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    dispatch({ type: "UPDATE_TOKEN" });
+    dispatch({ type: "UPDATE_TOKEN", payload: localStorage.getItem("token") });
   }, []);
 
   useEffect(() => {
     token !== null
-      ? AddPlaylist() && AddLiked() && AddWatchLater() && AddHistory()
+      ? addPlaylist() && addLiked() && addWatchLater() && addHistory()
       : null;
   }, [token]);
 

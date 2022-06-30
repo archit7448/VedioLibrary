@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useData } from "../../context/data";
 import "./modal.css";
 import {
-  AddPlayList,
-  AddVideoToPlaylist,
-  RemoveVideoFromPlaylist,
+  addPlaylist,
+  addVideoToPlaylist,
+  removeVideoFromPlaylist,
 } from "../../reducer/playlist";
 export const PlaylistModal = ({ prop }) => {
   const { dispatch, playList, token } = useData();
@@ -14,7 +14,7 @@ export const PlaylistModal = ({ prop }) => {
     if (!show || value.length === 0) {
       setShow(true);
     } else {
-      AddPlayList({ value, token }, dispatch);
+      addPlaylist({ value, token }, dispatch);
       setShow(false);
       setValue("");
     }
@@ -49,11 +49,11 @@ export const PlaylistModal = ({ prop }) => {
                   checked={isInPlayList(_id)}
                   onChange={() =>
                     isInPlayList(_id)
-                      ? RemoveVideoFromPlaylist(
+                      ? removeVideoFromPlaylist(
                           { video: prop, playlistId: _id, token },
                           dispatch
                         )
-                      : AddVideoToPlaylist(
+                      : addVideoToPlaylist(
                           { video: prop, playlistId: _id, token },
                           dispatch
                         )

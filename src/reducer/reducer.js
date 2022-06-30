@@ -1,15 +1,15 @@
-import { FilterData } from "./filter";
+import { filterData } from "./filter";
 import {
-  IntialGenres,
-  Intialvideo,
-  IntialPlayList,
-  AddVideoToPlaylist,
-  AddLiked,
-  UpdateWatchLater,
-  UpdateHistory,
+  intialGenres,
+  intialVideo,
+  intialPlaylist,
+  addVideoToPlaylist,
+  addLiked,
+  updateWatchLater,
+  updateHistory,
 } from "./intializeData";
 
-const ToggleModal = (state, action) => {
+const toggleModal = (state, action) => {
   return {
     ...state,
     setModal: !state.setModal,
@@ -17,23 +17,23 @@ const ToggleModal = (state, action) => {
   };
 };
 
-const updateToken = (state) => {
+const updateToken = (state, action) => {
   return {
     ...state,
-    token: localStorage.getItem("token"),
+    token: action.payload,
   };
 };
 
 const reducer = {
-  ADD_GENRES: IntialGenres,
-  ADD_VIDEOS: Intialvideo,
-  ADD_FILTER: FilterData,
-  ADD_PLAYLIST: IntialPlayList,
-  TOGGLE_MODAL: ToggleModal,
-  UPDATE_VIDEO_PLAYLIST: AddVideoToPlaylist,
-  UPDATE_LIKES: AddLiked,
-  UPDATE_WATCHLATER: UpdateWatchLater,
-  UPDATE_HISTORY: UpdateHistory,
+  ADD_GENRES: intialGenres,
+  ADD_VIDEOS: intialVideo,
+  ADD_FILTER: filterData,
+  ADD_PLAYLIST: intialPlaylist,
+  TOGGLE_MODAL: toggleModal,
+  UPDATE_VIDEO_PLAYLIST: addVideoToPlaylist,
+  UPDATE_LIKES: addLiked,
+  UPDATE_WATCHLATER: updateWatchLater,
+  UPDATE_HISTORY: updateHistory,
   UPDATE_TOKEN: updateToken,
 };
 

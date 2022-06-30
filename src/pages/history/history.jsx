@@ -1,12 +1,12 @@
 import { Header, Sidebar, CardForDelete } from "../../Components/index";
 import { useData } from "../../context/data";
-import { RemoveHistory } from "../../reducer/history";
+import { removeHistory } from "../../reducer/history";
 import { useNavigate } from "react-router-dom";
 export const HistoryPage = () => {
   const { history, dispatch, token } = useData();
   const DeleteHandler = (videoId, setShow) => {
     setShow(false);
-    RemoveHistory({ token, videoId }, dispatch);
+    removeHistory({ token, videoId }, dispatch);
   };
   const navigate = useNavigate();
   return (

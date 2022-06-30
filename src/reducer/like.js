@@ -1,5 +1,5 @@
 import axios from "axios";
-export const LikeVideo = ({ token, video }, dispatch) => {
+export const likeVideo = ({ token, video }, dispatch) => {
   (async () => {
     try {
       const response = await axios.post(
@@ -20,7 +20,7 @@ export const LikeVideo = ({ token, video }, dispatch) => {
   })();
 };
 
-export const UnlikeVideo = ( { _id, token }, dispatch) => { 
+export const unlikeVideo = ({ _id, token }, dispatch) => {
   (async () => {
     try {
       const response = await axios.delete(`/api/user/likes/${_id}`, {

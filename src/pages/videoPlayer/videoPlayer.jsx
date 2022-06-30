@@ -6,8 +6,8 @@ import { MdPlaylistAdd, MdWatchLater } from "react-icons/md";
 import { IoIosShareAlt } from "react-icons/io";
 import "./videoPlayer.css";
 import { useState } from "react";
-import { LikeVideo, UnlikeVideo } from "../../reducer/like";
-import { AddWatchLater } from "../../reducer/watchLater";
+import { likeVideo, unlikeVideo } from "../../reducer/like";
+import { addWatchLater } from "../../reducer/watchLater";
 import { notifyMessage } from "../../utility/notification/utility-toast";
 import copy from "copy-to-clipboard";
 export const VideoPage = () => {
@@ -34,8 +34,8 @@ export const VideoPage = () => {
   const LikedHandler = () => {
     if (token !== null) {
       CheckLiked(_id)
-        ? UnlikeVideo({ _id, token }, dispatch)
-        : LikeVideo({ video: videoForPage, token }, dispatch);
+        ? unlikeVideo({ _id, token }, dispatch)
+        : likeVideo({ video: videoForPage, token }, dispatch);
     } else {
       navigate("/login");
     }
@@ -47,7 +47,7 @@ export const VideoPage = () => {
       if (watchLater.find(({}) => _id === WatchLaterId)) {
         notifyMessage("Already in Watch Later");
       } else {
-        AddWatchLater({ token, video: videoForPage }, dispatch);
+        addWatchLater({ token, video: videoForPage }, dispatch);
       }
     } else {
       navigate("/login");

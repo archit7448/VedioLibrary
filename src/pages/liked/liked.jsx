@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { CardForDelete, Header, Sidebar } from "../../Components/index";
 import { useData } from "../../context/data";
-import { UnlikeVideo } from "../../reducer/like";
+import { unlikeVideo } from "../../reducer/like";
 export const LikedPage = () => {
   const { liked, dispatch } = useData();
   const DeleteHandler = (videoId, setShow) => {
     setShow(false);
-    UnlikeVideo({ _id: videoId, token }, dispatch);
+    unlikeVideo({ _id: videoId, token }, dispatch);
   };
   const token = localStorage.getItem("token");
   const navigate = useNavigate();

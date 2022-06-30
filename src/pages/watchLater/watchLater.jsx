@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { Header, Sidebar, CardForDelete } from "../../Components/index";
 import { useData } from "../../context/data";
-import { RemoveWatchLater } from "../../reducer/watchLater";
+import { removeWatchLater } from "../../reducer/watchLater";
 
 export const WatchLaterPage = () => {
   const { watchLater, dispatch, token } = useData();
   const DeleteHandler = (videoId, setShow) => {
     setShow(false);
-    RemoveWatchLater({ videoId, token }, dispatch);
+    removeWatchLater({ videoId, token }, dispatch);
   };
   const navigate = useNavigate();
   return (

@@ -2,7 +2,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RemovePlaylist } from "../../reducer/playlist";
+import { removePlaylist } from "../../reducer/playlist";
 import { useData } from "../../context/data";
 export const PlaylistCard = ({ prop }) => {
   const { playlistEach } = prop;
@@ -23,7 +23,7 @@ export const PlaylistCard = ({ prop }) => {
             <div className="video-card-hover playlist-card-hover">
               <h3
                 onClick={() =>
-                  RemovePlaylist({ playlistId: _id, token }, dispatch)
+                  removePlaylist({ playlistId: _id, token }, dispatch)
                 }
               >
                 {" "}

@@ -4,8 +4,8 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import "./videoCard.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { AddWatchLater } from "../../reducer/watchLater";
-import { AddHistory } from "../../reducer/history";
+import { addWatchLater } from "../../reducer/watchLater";
+import { addHistory } from "../../reducer/history";
 import { notifyMessage } from "../../utility/notification/utility-toast";
 export const VideoCard = ({ prop }) => {
   const { data } = prop;
@@ -29,7 +29,7 @@ export const VideoCard = ({ prop }) => {
       if (watchLater.find(({ _id }) => _id === WatchLaterId)) {
         notifyMessage("Already in Watch Later");
       } else {
-        AddWatchLater({ token, video: data }, dispatch);
+        addWatchLater({ token, video: data }, dispatch);
       }
     } else {
       navigate("/login");
@@ -43,7 +43,7 @@ export const VideoCard = ({ prop }) => {
         navigate(`/explore/${_id}`);
       } else {
         navigate(`/explore/${_id}`);
-        AddHistory({ token, video: data }, dispatch);
+        addHistory({ token, video: data }, dispatch);
       }
     } else {
       navigate(`/explore/${_id}`);
@@ -61,15 +61,15 @@ export const VideoCard = ({ prop }) => {
         <div className="video-card-func-wrapper flex-row">
           {show && (
             <div className="video-card-hover">
-              <h3 onClick={() => WatchHandler(_id)}>
+              <button onClick={() => WatchHandler(_id)}>
                 {" "}
                 <MdWatchLater />
                 Add to WatchLater
-              </h3>
-              <h3 onClick={() => PlayListHandler()}>
+              </button>
+              <button onClick={() => PlayListHandler()}>
                 <MdPlaylistAdd />
                 Add to Playlist
-              </h3>
+              </button>
             </div>
           )}
           <div

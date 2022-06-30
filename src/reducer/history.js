@@ -1,5 +1,5 @@
 import axios from "axios";
-export const AddHistory = ({ token, video }, dispatch) => {
+export const addHistory = ({ token, video }, dispatch) => {
   (async () => {
     try {
       const response = await axios.post(
@@ -20,7 +20,7 @@ export const AddHistory = ({ token, video }, dispatch) => {
   })();
 };
 
-export const RemoveHistory = ({ token, videoId }, dispatch) => {
+export const removeHistory = ({ token, videoId }, dispatch) => {
   (async () => {
     try {
       const response = await axios.delete(`/api/user/history/${videoId}`, {
@@ -35,7 +35,7 @@ export const RemoveHistory = ({ token, videoId }, dispatch) => {
   })();
 };
 
-export const DeleteAllHistory = (token, dispatch) => {
+export const deleteAllHistory = (token, dispatch) => {
   (async () => {
     try {
       const response = await axios.delete(`/api/user/history/all`, {

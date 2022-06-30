@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
   const { dispatch } = useData();
   const successHandler = () => {
     navigate("/explore");
-    dispatch({ type: "UPDATE_TOKEN" });
+    dispatch({ type: "UPDATE_TOKEN", payload: localStorage.getItem("token") });
     notifySuccess("Login Sucess!");
   };
 
@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const SignUpHandler = async (params) => {
+  const signUpHandler = async (params) => {
     try {
       const response = await axios.post("/api/auth/signup", {
         params,
@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const LoginHandler = async (params) => {
+  const loginHandler = async (params) => {
     try {
       const response = await axios.post("/api/auth/login", params);
       localStorage.setItem("token", response.data.encodedToken);
@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const LogOutHandler = () => {
+  const logOutHandler = () => {
     localStorage.removeItem("token");
     navigate("/");
     dispatch({ type: "UPDATE_TOKEN" });
@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ LoginHandler, SignUpHandler, LogOutHandler }}
+      value={{ loginHandler, signUpHandler, logOutHandler }}
     >
       {children}
     </AuthContext.Provider>

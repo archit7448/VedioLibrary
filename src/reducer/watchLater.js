@@ -1,6 +1,6 @@
 import axios from "axios";
 import { notifyMessage } from "../utility/notification/utility-toast";
-export const AddWatchLater = ({ token, video }, dispatch) => {
+export const addWatchLater = ({ token, video }, dispatch) => {
   (async () => {
     try {
       const response = await axios.post(
@@ -25,7 +25,7 @@ export const AddWatchLater = ({ token, video }, dispatch) => {
   })();
 };
 
-export const RemoveWatchLater = ({ videoId, token }, dispatch) => {
+export const removeWatchLater = ({ videoId, token }, dispatch) => {
   (async () => {
     try {
       const response = await axios.delete(`/api/user/watchlater/${videoId}`, {

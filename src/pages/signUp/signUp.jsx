@@ -10,12 +10,12 @@ export const SignUpPage = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { SignUpHandler } = useAuth();
+  const { signUpHandler } = useAuth();
 
-  const VerificationCheck = () => {
+  const verificationCheck = () => {
     if (validateEmail(email)) {
       if (firstName.length > 1 && lastName.length > 1 && password.length > 1) {
-        SignUpHandler({
+        signUpHandler({
           firstName: firstName,
           lastName: lastName,
           email: email,
@@ -64,7 +64,7 @@ export const SignUpPage = () => {
           />
           <button
             className="button-primary button-login"
-            onClick={() => VerificationCheck()}
+            onClick={() => verificationCheck()}
           >
             Sign Up
           </button>
