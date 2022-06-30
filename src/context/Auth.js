@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
   const logOutHandler = () => {
     localStorage.removeItem("token");
     navigate("/");
-    dispatch({ type: "UPDATE_TOKEN" });
+    dispatch({ type: "UPDATE_TOKEN", payload: localStorage.getItem("token") });
     notifySuccess("Logout sucess!");
   };
 
