@@ -36,12 +36,14 @@
   border-radius: 2px;
   background-color: var(--color-background-secondary);
 }
-.video-card h3 {
+.video-card button {
   font-weight: 200;
   margin-top: 2px 0;
   padding: 5px;
+  color: var(--color-primary-first);
+  background-color: var(--color-background-secondary);
 }
-.video-card h3:hover {
+.video-card button:hover {
   background-color: var(--color-icon);
 }
 .video-card-vertical:hover .video-card-hover {
@@ -51,7 +53,7 @@
   width: 100%;
   height: 20rem;
 }
-.playlist-card-hover h3:hover {
+.playlist-card-hover button:hover {
   color: var(--color-primary-second);
   background-color: var(--color-background-secondary);
 }

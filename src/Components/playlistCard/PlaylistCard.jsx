@@ -2,11 +2,11 @@ import { AiFillDelete } from "react-icons/ai";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RemovePlaylist } from "../../reducer/playlist";
+import { removePlaylist } from "../../reducer/index";
 import { useData } from "../../context/data";
 export const PlaylistCard = ({ prop }) => {
   const { playlistEach } = prop;
-  const { dispatch } = useData();
+  const { dispatch, token } = useData();
   const { videos, title, _id } = playlistEach;
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
@@ -21,7 +21,11 @@ export const PlaylistCard = ({ prop }) => {
         <div className="video-card-func-wrapper flex-row">
           {show && (
             <div className="video-card-hover playlist-card-hover">
-              <h3 onClick={() => RemovePlaylist(_id, dispatch)}>
+              <h3
+                onClick={() =>
+                  removePlaylist({ playlistId: _id, token }, dispatch)
+                }
+              >
                 {" "}
                 <AiFillDelete />
                 Delete Playlist

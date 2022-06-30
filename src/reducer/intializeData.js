@@ -1,8 +1,8 @@
-export const IntialGenres = (state, action) => {
+export const intialGenres = (state, action) => {
   return { ...state, genres: [...action.payload] };
 };
 
-export const Intialvideo = (state, action) => {
+export const intialVideo = (state, action) => {
   return {
     ...state,
     videos: [...action.payload],
@@ -10,14 +10,14 @@ export const Intialvideo = (state, action) => {
   };
 };
 
-export const IntialPlayList = (state, action) => {
+export const intialPlaylist = (state, action) => {
   return {
     ...state,
     playlist: [...action.payload],
   };
 };
 
-export const AddVideoToPlaylist = (state, action) => {
+export const addVideoToPlaylist = (state, action) => {
   const { playlistData, playlistId } = action.payload;
   return {
     ...state,
@@ -27,14 +27,14 @@ export const AddVideoToPlaylist = (state, action) => {
   };
 };
 
-export const AddLiked = (state, action) => {
+export const addLiked = (state, action) => {
   return { ...state, liked: [...action.payload] };
 };
 
-export const UpdateWatchLater = (state, action) => {
+export const updateWatchLater = (state, action) => {
   return { ...state, watchLater: [...action.payload] };
 };
 
-export const UpdateHistory = (state, action) => {
+export const updateHistory = (state, action) => {
   return { ...state, history: [...action.payload] };
 };

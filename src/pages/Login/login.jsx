@@ -7,7 +7,7 @@ export const LogInPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { LoginHandler } = useAuth();
+  const { loginHandler } = useAuth();
   const setGuestCredentials = () => {
     setEmail("architsingh@gmail.com");
     setPassword("architSingh123");
@@ -38,7 +38,7 @@ export const LogInPage = () => {
           </h3>
           <button
             className="button-primary button-login"
-            onClick={() => LoginHandler({ email: email, password: password })}
+            onClick={() => loginHandler({ email: email, password: password })}
           >
             Login
           </button>

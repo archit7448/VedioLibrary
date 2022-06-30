@@ -13,9 +13,9 @@ import {
   SignUpPage,
   VideoPage,
   PageForEachPlaylist,
+  RestrictedRoute,
 } from "./pages/index";
 function App() {
-  document.title = "StrangeLibrary"
   return (
     <div className="App">
       <Routes>
@@ -25,10 +25,12 @@ function App() {
         <Route path="/liked" element={<LikedPage />} />
         <Route path="/WatchLater" element={<WatchLaterPage />} />
         <Route path="/playlist" element={<PlaylistPage />} />
-        <Route path="/login" element={<LogInPage />} />
-        <Route path="/signUp" element={<SignUpPage />} />
-        <Route path="/explore/:videoId" element={<VideoPage />} />
+        <Route path="/explore/:VideoId" element={<VideoPage />} />
         <Route path="/playlist/:playlistId" element={<PageForEachPlaylist />} />
+        <Route element={<RestrictedRoute />}>
+          <Route path="/login" element={<LogInPage />} />
+          <Route path="/signUp" element={<SignUpPage />} />
+        </Route>
       </Routes>
       <ToastContainer />
     </div>

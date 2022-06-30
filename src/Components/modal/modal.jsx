@@ -2,19 +2,19 @@ import { useState } from "react";
 import { useData } from "../../context/data";
 import "./modal.css";
 import {
-  AddPlayList,
-  AddVideoToPlaylist,
-  RemoveVideoFromPlaylist,
-} from "../../reducer/playlist";
+  addPlaylist,
+  addVideoToPlaylist,
+  removeVideoFromPlaylist,
+} from "../../reducer/index";
 export const PlaylistModal = ({ prop }) => {
-  const { dispatch, playList } = useData();
+  const { dispatch, playList, token } = useData();
   const [show, setShow] = useState(false);
   const [value, setValue] = useState("");
   const PlayListHandler = () => {
     if (!show || value.length === 0) {
       setShow(true);
     } else {
-      AddPlayList(value, dispatch);
+      addPlaylist({ value, token }, dispatch);
       setShow(false);
       setValue("");
     }
@@ -49,8 +49,14 @@ export const PlaylistModal = ({ prop }) => {
                   checked={isInPlayList(_id)}
                   onChange={() =>
                     isInPlayList(_id)
-                      ? RemoveVideoFromPlaylist(prop, _id, dispatch)
-                      : AddVideoToPlaylist(prop, _id, dispatch)
+                      ? removeVideoFromPlaylist(
+                          { video: prop, playlistId: _id, token },
+                          dispatch
+                        )
+                      : addVideoToPlaylist(
+                          { video: prop, playlistId: _id, token },
+                          dispatch
+                        )
                   }
                 />
                 <label>{title}</label>

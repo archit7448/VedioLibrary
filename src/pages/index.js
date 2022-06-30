@@ -8,3 +8,4 @@ export { SignUpPage } from "./signUp/signUp";
 export { WatchLaterPage } from "./watchLater/watchLater";
 export { VideoPage } from "./videoPlayer/videoPlayer";
 export { PageForEachPlaylist } from "./pageForEachPlaylist/pageForEachPlaylist";
+export { RestrictedRoute } from "./auth/restrictedRoute";

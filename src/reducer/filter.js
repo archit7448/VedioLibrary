@@ -1,5 +1,5 @@
 
-export const FilterData = (state, action) => {
+export const filterData = (state, action) => {
   const { videos } = state;
   return {
     ...state,

@@ -6,18 +6,16 @@ import { MdPlaylistAdd, MdWatchLater } from "react-icons/md";
 import { IoIosShareAlt } from "react-icons/io";
 import "./videoPlayer.css";
 import { useState } from "react";
-import { LikeVideo, UnlikeVideo } from "../../reducer/like";
-import { AddWatchLater } from "../../reducer/watchLater";
+import { likeVideo, unlikeVideo, addWatchLater } from "../../reducer/index";
 import { notifyMessage } from "../../utility/notification/utility-toast";
 import copy from "copy-to-clipboard";
 export const VideoPage = () => {
-  const { videoId } = useParams();
-  const { videos, setModal, dispatch, liked, watchLater } = useData();
+  const { VideoId } = useParams();
+  const { videos, setModal, dispatch, liked, watchLater, token } = useData();
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const token = localStorage.getItem("token");
-  const videoForPage = videos.find(({ _id }) => _id === videoId);
+  const videoForPage = videos.find(({ _id }) => VideoId === _id);
   const { _id, description, MovieName, categoryName } = videoForPage;
   //ForPlaylist
 
@@ -35,8 +33,8 @@ export const VideoPage = () => {
   const LikedHandler = () => {
     if (token !== null) {
       CheckLiked(_id)
-        ? UnlikeVideo(_id, dispatch)
-        : LikeVideo(videoForPage, dispatch);
+        ? unlikeVideo({ _id, token }, dispatch)
+        : likeVideo({ video: videoForPage, token }, dispatch);
     } else {
       navigate("/login");
     }
@@ -48,7 +46,7 @@ export const VideoPage = () => {
       if (watchLater.find(({}) => _id === WatchLaterId)) {
         notifyMessage("Already in Watch Later");
       } else {
-        AddWatchLater(videoForPage, dispatch);
+        addWatchLater({ token, video: videoForPage }, dispatch);
       }
     } else {
       navigate("/login");
