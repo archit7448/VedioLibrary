@@ -8,7 +8,6 @@ import {
   updateWatchLater,
   updateHistory,
 } from "./intializeData";
-
 const toggleModal = (state, action) => {
   return {
     ...state,
@@ -54,3 +53,5 @@ export const IntialState = {
   history: [],
   token: null,
 };
+
+export {};

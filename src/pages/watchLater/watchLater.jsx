@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Header, Sidebar, CardForDelete } from "../../Components/index";
 import { useData } from "../../context/data";
-import { removeWatchLater } from "../../reducer/watchLater";
+import { removeWatchLater } from "../../reducer/index";
 
 export const WatchLaterPage = () => {
   const { watchLater, dispatch, token } = useData();

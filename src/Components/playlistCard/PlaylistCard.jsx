@@ -2,7 +2,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { removePlaylist } from "../../reducer/playlist";
+import { removePlaylist } from "../../reducer/index";
 import { useData } from "../../context/data";
 export const PlaylistCard = ({ prop }) => {
   const { playlistEach } = prop;

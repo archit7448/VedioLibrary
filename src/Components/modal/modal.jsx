@@ -5,7 +5,7 @@ import {
   addPlaylist,
   addVideoToPlaylist,
   removeVideoFromPlaylist,
-} from "../../reducer/playlist";
+} from "../../reducer/index";
 export const PlaylistModal = ({ prop }) => {
   const { dispatch, playList, token } = useData();
   const [show, setShow] = useState(false);

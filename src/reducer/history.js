@@ -34,18 +34,3 @@ export const removeHistory = ({ token, videoId }, dispatch) => {
     }
   })();
 };
-
-export const deleteAllHistory = (token, dispatch) => {
-  (async () => {
-    try {
-      const response = await axios.delete(`/api/user/history/all`, {
-        headers: {
-          authorization: token,
-        },
-      });
-      dispatch({ type: "UPDATE_HISTORY", payload: response.data.history });
-    } catch (error) {
-      console.log(error);
-    }
-  })();
-};

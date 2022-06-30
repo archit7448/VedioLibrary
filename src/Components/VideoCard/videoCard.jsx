@@ -4,8 +4,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import "./videoCard.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { addWatchLater } from "../../reducer/watchLater";
-import { addHistory } from "../../reducer/history";
+import { addWatchLater, addHistory } from "../../reducer/index";
 import { notifyMessage } from "../../utility/notification/utility-toast";
 export const VideoCard = ({ prop }) => {
   const { data } = prop;

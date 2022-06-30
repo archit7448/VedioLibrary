@@ -6,8 +6,7 @@ import { MdPlaylistAdd, MdWatchLater } from "react-icons/md";
 import { IoIosShareAlt } from "react-icons/io";
 import "./videoPlayer.css";
 import { useState } from "react";
-import { likeVideo, unlikeVideo } from "../../reducer/like";
-import { addWatchLater } from "../../reducer/watchLater";
+import { likeVideo, unlikeVideo, addWatchLater } from "../../reducer/index";
 import { notifyMessage } from "../../utility/notification/utility-toast";
 import copy from "copy-to-clipboard";
 export const VideoPage = () => {
