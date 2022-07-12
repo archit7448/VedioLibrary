@@ -43,7 +43,7 @@ export const VideoPage = () => {
   ///For WatchLater
   const WatchHandler = (WatchLaterId) => {
     if (token !== null) {
-      if (watchLater.find(({}) => _id === WatchLaterId)) {
+      if (watchLater.find(({ _id }) => _id === WatchLaterId)) {
         notifyMessage("Already in Watch Later");
       } else {
         addWatchLater({ token, video: videoForPage }, dispatch);
