@@ -50,7 +50,7 @@ export const PlaylistModal = ({ prop }) => {
                   onChange={() =>
                     isInPlayList(_id)
                       ? removeVideoFromPlaylist(
-                          { video: prop, playlistId: _id, token },
+                          { videoId: prop._id, playlistId: _id, token },
                           dispatch
                         )
                       : addVideoToPlaylist(
