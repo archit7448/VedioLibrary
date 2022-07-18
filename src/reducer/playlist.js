@@ -48,14 +48,13 @@ export const addVideoToPlaylist = ({ video, playlistId, token }, dispatch) => {
 };
 
 export const removeVideoFromPlaylist = (
-  { video, playlistId, token },
+  { videoId, playlistId, token },
   dispatch
 ) => {
-  const { _id } = video;
   (async () => {
     try {
       const response = await axios.delete(
-        `/api/user/playlists/${playlistId}/${_id}`,
+        `/api/user/playlists/${playlistId}/${videoId}`,
         {
           headers: {
             authorization: token,
