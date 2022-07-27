@@ -5,19 +5,39 @@ import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { MdPlaylistAdd, MdWatchLater } from "react-icons/md";
 import { IoIosShareAlt } from "react-icons/io";
 import "./videoPlayer.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { likeVideo, unlikeVideo, addWatchLater } from "../../reducer/index";
 import { notifyMessage } from "../../utility/notification/utility-toast";
 import copy from "copy-to-clipboard";
+import axios from "axios";
+import { Loader } from "../../utility/loader/loader";
 export const VideoPage = () => {
   const { VideoId } = useParams();
-  const { videos, setModal, dispatch, liked, watchLater, token } = useData();
+  const { setModal, dispatch, liked, watchLater, token } = useData();
   const [show, setShow] = useState(false);
+  const [videoState, setVideoState] = useState({});
   const navigate = useNavigate();
   const location = useLocation();
-  const videoForPage = videos.find(({ _id }) => VideoId === _id);
-  const { _id, description, MovieName, categoryName } = videoForPage;
+
+  let _id, description, MovieName, categoryName;
+
+  if (videoState.length !== 0) {
+    ({ _id, description, MovieName, categoryName } = videoState);
+  }
+
   //ForPlaylist
+
+  useEffect(() => {
+    (async (videoId) => {
+      try {
+        const response = await axios.get(`/api/video/${videoId}`);
+        setVideoState({ ...response.data.video });
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    })(VideoId);
+  }, []);
 
   const PlayListHandler = () => {
     token !== null ? dispatch({ type: "TOGGLE_MODAL" }) : navigate("/login");
@@ -34,7 +54,7 @@ export const VideoPage = () => {
     if (token !== null) {
       CheckLiked(_id)
         ? unlikeVideo({ _id, token }, dispatch)
-        : likeVideo({ video: videoForPage, token }, dispatch);
+        : likeVideo({ video: videoState, token }, dispatch);
     } else {
       navigate("/login");
     }
@@ -46,7 +66,7 @@ export const VideoPage = () => {
       if (watchLater.find(({ _id }) => _id === WatchLaterId)) {
         notifyMessage("Already in Watch Later");
       } else {
-        addWatchLater({ token, video: videoForPage }, dispatch);
+        addWatchLater({ token, video: videoState }, dispatch);
       }
     } else {
       navigate("/login");
@@ -59,10 +79,12 @@ export const VideoPage = () => {
     notifyMessage("Copied sucessfully");
   };
 
-  return (
+  return videoState.length === 0 ? (
+    <Loader />
+  ) : (
     <main>
       <Sidebar />
-      {setModal && <PlaylistModal prop={videoForPage} />}
+      {setModal && <PlaylistModal prop={videoState} />}
       <aside className="video-page">
         <Header />
         <div className="iframe-wrapper">

@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { Header, PlaylistCard, Sidebar } from "../../Components/index";
 import { useData } from "../../context/data";
+import { reverseArrayFunc } from "../../utility/reverseArray/reverseArray";
 export const PlaylistPage = () => {
   const { playList } = useData();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const reverseArray = reverseArrayFunc(playList);
   return (
     <main>
       <Sidebar />
@@ -12,8 +14,8 @@ export const PlaylistPage = () => {
         <Header />
         {token !== null ? (
           <div className="video-wrapper">
-            {playList.length > 0 ? (
-              playList.map((playlistEach) => {
+            {reverseArray.length > 0 ? (
+              reverseArray.map((playlistEach) => {
                 const { _id } = playlistEach;
                 return <PlaylistCard prop={{ playlistEach }} key={_id} />;
               })

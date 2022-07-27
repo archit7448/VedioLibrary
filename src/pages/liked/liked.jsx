@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { CardForDelete, Header, Sidebar } from "../../Components/index";
 import { useData } from "../../context/data";
 import { unlikeVideo } from "../../reducer/like";
+import { reverseArrayFunc } from "../../utility/reverseArray/reverseArray";
 export const LikedPage = () => {
   const { liked, dispatch } = useData();
   const DeleteHandler = (videoId, setShow) => {
@@ -10,6 +11,7 @@ export const LikedPage = () => {
   };
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const reverseArray = reverseArrayFunc(liked);
   return (
     <main>
       <Sidebar />
@@ -17,8 +19,8 @@ export const LikedPage = () => {
         <Header />
         {token !== null ? (
           <div className="video-wrapper">
-            {liked.length ? (
-              liked.map((data) => {
+            {reverseArray.length > 0 ? (
+              reverseArray.map((data) => {
                 return (
                   <CardForDelete
                     prop={{ data, DeleteHandler, DeleteName: "Remove Video" }}
