@@ -13,7 +13,9 @@ export const PlaylistCard = ({ prop }) => {
   return (
     <div className="video-card video-playlist">
       <img
-        src={`https://i.ytimg.com/vi/${videos[0]?._id}/maxresdefault.jpg`}
+        src={`https://i.ytimg.com/vi/${
+          videos[videos.length - 1]?._id
+        }/maxresdefault.jpg`}
         onClick={() => navigate(`/playlist/${_id}`)}
       />
       <div className="flex-row flex-space-between flex-center video-data-div">

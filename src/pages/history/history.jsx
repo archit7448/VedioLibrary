@@ -2,6 +2,7 @@ import { Header, Sidebar, CardForDelete } from "../../Components/index";
 import { useData } from "../../context/data";
 import { removeHistory } from "../../reducer/history";
 import { useNavigate } from "react-router-dom";
+import { reverseArrayFunc } from "../../utility/reverseArray/reverseArray";
 export const HistoryPage = () => {
   const { history, dispatch, token } = useData();
   const DeleteHandler = (videoId, setShow) => {
@@ -9,6 +10,7 @@ export const HistoryPage = () => {
     removeHistory({ token, videoId }, dispatch);
   };
   const navigate = useNavigate();
+  const reverseArray = reverseArrayFunc(history);
   return (
     <main>
       <Sidebar />
@@ -16,8 +18,8 @@ export const HistoryPage = () => {
         <Header />
         {token !== null ? (
           <div className="video-wrapper">
-            {history.length ? (
-              history.map((data) => {
+            {reverseArray.length > 0 ? (
+              reverseArray.map((data) => {
                 return (
                   <CardForDelete
                     prop={{

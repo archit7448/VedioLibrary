@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Header, Sidebar, CardForDelete } from "../../Components/index";
 import { useData } from "../../context/data";
 import { removeWatchLater } from "../../reducer/index";
+import { reverseArrayFunc } from "../../utility/reverseArray/reverseArray";
 
 export const WatchLaterPage = () => {
   const { watchLater, dispatch, token } = useData();
@@ -10,6 +11,7 @@ export const WatchLaterPage = () => {
     removeWatchLater({ videoId, token }, dispatch);
   };
   const navigate = useNavigate();
+  const reverseArray = reverseArrayFunc(watchLater);
   return (
     <main>
       <Sidebar />
@@ -17,8 +19,8 @@ export const WatchLaterPage = () => {
         <Header />
         {token !== null ? (
           <div className="video-wrapper">
-            {watchLater.length > 0 ? (
-              watchLater.map((data) => {
+            {reverseArray.length > 0 ? (
+              reverseArray.map((data) => {
                 return (
                   <CardForDelete
                     prop={{
